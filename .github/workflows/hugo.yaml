@@ -7,7 +7,7 @@ on:
 
 env:
   AWS_REGION: us-west-2
-  AWS_ROLE_ARN: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/github_actions
+  AWS_ROLE_ARN: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/github-actions
   AWS_TARGEET_S3_BUCKET: blog.nns7.work
 
 jobs:
