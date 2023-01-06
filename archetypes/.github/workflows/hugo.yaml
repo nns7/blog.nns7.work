@@ -1,0 +1,47 @@
+name: Hugo
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "/**"
+
+defaults:
+  run:
+    working-directory: /
+
+env:
+  AWS_REGION: us-west-2
+  AWS_ROLE_ARN: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/github_actions
+  AWS_TARGEET_S3_BUCKET: blog.nns7.work
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "0.109.0"
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Configure AWS credentials from IAM Role
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ env.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Upload file to S3
+        run: aws s3 sync --delete public s3://${{ env.AWS_TARGEET_S3_BUCKET }}
