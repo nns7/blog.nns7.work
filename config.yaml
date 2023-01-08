@@ -2,7 +2,7 @@ baseurl: https://blog.nns7.work
 languageCode: ja
 theme: hugo-theme-stack
 paginate: 5
-title: nns7 note
+title: nns.note
 author:
   name: nns7
 
