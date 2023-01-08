@@ -3,12 +3,14 @@ languageCode: ja
 theme: hugo-theme-stack
 paginate: 5
 title: nns7 note
+author:
+  name: nns7
 
 # Change it to your Disqus shortname before using
 disqusShortname: hugo-theme-stack
 
 # GA Tracking ID
-googleAnalytics:
+googleAnalytics: G-1BS0YV73PS
 
 # Theme i18n support
 # Available values: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw
@@ -19,7 +21,7 @@ DefaultContentLanguage: ja
 hasCJKLanguage: true
 
 permalinks:
-  post: /p/:slug/
+  post: /post/:slug/
   page: /:slug/
 
 params:
@@ -58,17 +60,23 @@ params:
   widgets:
     homepage:
       - type: search
-      - type: archives
-        params:
-          limit: 5
       - type: categories
         params:
           limit: 10
       - type: tag-cloud
         params:
           limit: 10
+      - type: archives
+        params:
+          limit: 5
     page:
       - type: toc
+      - type: categories
+        params:
+          limit: 10
+      - type: tag-cloud
+        params:
+          limit: 10
 
   opengraph:
     twitter:
@@ -167,6 +175,6 @@ markup:
     codeFences: true
     guessSyntax: true
     lineNoStart: 1
-    lineNos: true
+    lineNos: false
     lineNumbersInTable: true
     tabWidth: 4
