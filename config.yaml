@@ -97,6 +97,13 @@ params:
     content:
       enabled: true
 
+  # blog-card用設定
+  dafaultNoimage: image/default_noimage.png
+  imageQuality: 75
+
+  # hugo-amazon-jp用設定
+  amazonJpAffiliate: "nns7-22"
+
 ### Custom menu
 ### See https://docs.stack.jimmycai.com/configuration/custom-menu.html
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter

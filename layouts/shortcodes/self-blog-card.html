@@ -1,0 +1,26 @@
+{{ $url := .Get 0 }}
+{{/* 自記事のブログカードを表示しようとすると無限ループになるのを回避 */}}
+{{- if not (in .Page.Permalink $url) -}}
+    {{- with $.Site.GetPage $url -}}
+        <a href="{{- .Permalink -}}" style="padding: 12px;border: solid 1px #eee;display: flex;text-decoration: none;color: inherit;" onMouseOver="this.style.opacity='0.9'">
+            {{- $thumbnail_url := "" -}}
+            {{- with $thumbnail := index (.Resources.Match "thumbnail.*") 0 -}}
+                {{- $thumbnail_url = ($thumbnail.Fill (printf "200x200 center q%d webp" $.Site.Params.imageQuality)).Permalink -}}
+            {{- else -}}
+                {{- $thumbnail = resources.Get $.Site.Params.dafaultNoimage -}}
+                {{- $thumbnail_url = ($thumbnail.Fill (printf "200x200 center q%d webp" $.Site.Params.imageQuality)).Permalink -}}
+            {{- end -}}
+            <div style="flex-shrink: 0;">
+                <img src="{{- $thumbnail_url -}}" alt="{{ .Title }}" width="100" height="100">
+            </div>
+            <div style="margin-left: 10px;">
+                <h2 style="margin: 0;padding-bottom: 13px;border: none;font-size: 16px;">
+                    {{- .Title -}}
+                </h2>
+                <div style="margin: 0;font-size: 13px;word-break: break-word;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;overflow: hidden;">
+                    {{- .Summary | plainify | safeHTML -}}
+                </div>
+            </div>
+        </a>
+    {{- end -}}
+{{- end -}}
