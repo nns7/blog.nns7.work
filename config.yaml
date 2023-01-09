@@ -146,9 +146,15 @@ menu:
 
     - identifier: facebook
       name: Facebook
-      url: https://www.facebook.com/profile.php?id=100004957118710
+      url: https://www.facebook.com/nns.note/
       params:
         icon: brand-facebook
+
+    - identifier: twitter
+      name: Twitter
+      url: https://twitter.com/nns7
+      params:
+        icon: brand-twitter
 
 related:
   includeNewer: true
