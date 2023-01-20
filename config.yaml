@@ -150,12 +150,6 @@ menu:
       params:
         icon: brand-facebook
 
-    - identifier: twitter
-      name: Twitter
-      url: https://twitter.com/nns7
-      params:
-        icon: brand-twitter
-
 related:
   includeNewer: true
   threshold: 60
