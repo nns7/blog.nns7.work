@@ -144,12 +144,6 @@ menu:
       params:
         icon: rss
 
-    - identifier: facebook
-      name: Facebook
-      url: https://www.facebook.com/nns.note/
-      params:
-        icon: brand-facebook
-
 related:
   includeNewer: true
   threshold: 60
